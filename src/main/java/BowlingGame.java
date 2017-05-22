@@ -1,9 +1,9 @@
 public class Bowling {
-	public static void main(String[] args) throws IOException {
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader is = new BufferedReader(isr);
-		String score = is.readLine();
-		String[] temp = score.split("\\|");
+	public int getBowlingScore(String bowlingCode) {
+		if( bowlingCode.length == null)
+			return 0;
+		
+        	String[] temp = bowlingCode.split("\\|");
 
 		int len=(temp.length==10?10:11);
 		String[] cores = new String[len];
@@ -20,10 +20,9 @@ public class Bowling {
 				cores[i] = temp[i];
 			}
 		}
-		System.out.println(getBowlingScore(cores));
-	}
-
-	public static int getBowlingScore(String[] cores) {
+		return getScore(cores);
+    	}
+	public int getScore(String[] cores) {
 		int sum = 0;
 		int len = cores.length;
 		int[][] scores = new int[len][2];
@@ -61,7 +60,7 @@ public class Bowling {
 		return sum;
 	}
 
-	public static int turnChar(int num, char ch) {
+	public int turnChar(int num, char ch) {
 		int res = 0;
 		switch (ch) {
 		case 'X':
