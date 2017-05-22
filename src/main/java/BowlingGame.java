@@ -3,11 +3,23 @@ public class Bowling {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader is = new BufferedReader(isr);
 		String score = is.readLine();
-		String res1 = score.replaceAll("\\|", "#");
-		String res = res1.replaceAll("\\|\\|", "#");
-		String[] cores = res.split("#");
+		String[] temp = score.split("\\|");
 
+		int len=(temp.length==10?10:11);
+		String[] cores = new String[len];
 		
+		if (temp.length == 12) {
+			for (int i = 0; i < temp.length - 1; i++) {
+				cores[i] = temp[i];
+				if (temp[i].equals("")) {
+					cores[i] = temp[i + 1];
+				}
+			}
+		} else {
+			for(int i=0; i<temp.length; i++){
+				cores[i] = temp[i];
+			}
+		}
 		System.out.println(getBowlingScore(cores));
 	}
 
@@ -31,7 +43,7 @@ public class Bowling {
 			}
 		}
 		
-		int temp = len == 10 ? len : len - 1;
+		int temp = (len == 10 ? len : len - 1);
 		for (int i = 0; i < temp; i++) {
 			if (cores[i].length() == 1) {
 				if (scores[i + 1][0] == 10 && i + 2 < len)
@@ -46,7 +58,6 @@ public class Bowling {
 				}
 			}
 		}
-
 		return sum;
 	}
 
