@@ -1,4 +1,4 @@
-public class Bowling {
+public class BowlingGame {
 	public int getBowlingScore(String bowlingCode) {
 		if( bowlingCode.isEmpty())
 			return -1;
