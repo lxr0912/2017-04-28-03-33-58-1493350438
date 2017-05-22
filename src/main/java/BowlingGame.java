@@ -1,6 +1,6 @@
 public class Bowling {
 	public int getBowlingScore(String bowlingCode) {
-		if( bowlingCode.length == 0)
+		if( bowlingCode.isEmpty())
 			return -1;
 		
         	String[] temp = bowlingCode.split("\\|");
